@@ -25,12 +25,14 @@ public class CheckInController {
 	@Autowired
 	private CheckInRepository checkInRepository;
 	
+	//to insert checkin data
 	@PostMapping("/checkin")
-	public CheckInRecord postAuthor(@RequestBody CheckInRecord checkInRecord)
+	public CheckInRecord addCheckin(@RequestBody CheckInRecord checkInRecord)
 	{
 		return checkInRepository.save(checkInRecord);
 	}
 	
+	//to get all checkin data
 	@GetMapping("/checkin")
 	public List<CheckInRecord> getAllcheckin()
 	{
