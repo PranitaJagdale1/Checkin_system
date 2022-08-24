@@ -19,10 +19,10 @@ import com.checkIn.api.repository.CheckInRepository;
 @SpringBootTest(classes= {CheckinServiceMockitoTests.class})
 public class CheckinServiceMockitoTests {
 
-	@Mock
+	@Mock			//This Particular repository we use for mocking purpose
 	CheckInRepository checkInRepository;
 	
-	@InjectMocks
+	@InjectMocks	//To invoke all api services from controller 
 	CheckInController checkInController;
 	
 	public List<CheckInRecord> myCheckIn;
@@ -40,7 +40,7 @@ public class CheckinServiceMockitoTests {
 		//(i.e whenever this getAllChecking() method is called it will return our own data.
 		//It will not return actual data from database)
 		when(checkInRepository.findAll()).thenReturn(myCheckIn);
-		assertEquals(2,checkInController.getAllcheckin().size());
+		assertEquals(2,checkInController.getAllcheckin().size()); //checks if expected value and actual value are equal
 		
 	}
 	
@@ -52,7 +52,7 @@ public class CheckinServiceMockitoTests {
 		CheckInRecord checkInRecord = new CheckInRecord(3,"Sawant","Rutuja","3","6pm","AirlineA","11-10-2022",3);
 		//mock external dependency
 		when(checkInRepository.save(checkInRecord)).thenReturn(checkInRecord);
-		assertEquals(checkInRecord,checkInController.addCheckin(checkInRecord));
+		assertEquals(checkInRecord,checkInController.addCheckin(checkInRecord)); //checks if expected value and actual value are equal
 	}
 	
 }

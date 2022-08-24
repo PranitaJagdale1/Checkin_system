@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//model class
+
 @Entity
 public class CheckInRecord {
 	@Id
