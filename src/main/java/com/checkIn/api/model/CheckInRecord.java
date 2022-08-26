@@ -15,6 +15,7 @@ public class CheckInRecord {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	 long id;
 	
+	
 	String lastname;
 	String firstname;
 	String seatNumber;

@@ -1,5 +1,6 @@
 package com.checkIn.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -54,5 +55,27 @@ public class CheckinServiceMockitoTests {
 		when(checkInRepository.save(checkInRecord)).thenReturn(checkInRecord);
 		assertEquals(checkInRecord,checkInController.addCheckin(checkInRecord)); //checks if expected value and actual value are equal
 	}
+	
+	//CheckIn context loads
+	@Test
+	@Order(3)
+	public void checkinContextLoad() throws Exception
+	{
+		assertThat(checkInController).isNotNull();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

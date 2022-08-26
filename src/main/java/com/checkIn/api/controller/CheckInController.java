@@ -16,7 +16,7 @@ import com.checkIn.api.repository.CheckInRepository;
 @RestController
 public class CheckInController {
 
-	/*@GetMapping("/checkin")
+	/*@GetMapping("/checkinhost")
 	public String gethello()
 	{
 		return "Hello world";
