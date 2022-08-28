@@ -3,6 +3,7 @@ package com.checkIn.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,12 +17,14 @@ import com.checkIn.api.repository.CheckInRepository;
 @RestController
 public class CheckInController {
 
-	/*@GetMapping("/checkinhost")
+	@GetMapping("/checkinhost")
 	public String gethello()
 	{
 		return "Hello world";
-	}*/
+	}
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private CheckInRepository checkInRepository;
 	
