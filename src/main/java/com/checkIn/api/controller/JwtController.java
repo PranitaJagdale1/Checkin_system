@@ -18,9 +18,6 @@ import com.checkIn.api.model.JwtResponse;
 import com.checkIn.api.services.PassUserDetailsService;
 
 
-
-
-
 @RestController
 public class JwtController {
 
@@ -57,7 +54,7 @@ public class JwtController {
 		String token = this.jwtUtil.generateToken(userDetails);
 		System.out.println("JWT"+token);
 		
-		//to send token ---> {"token":"value"}
+	
 		
 				return ResponseEntity.ok(new JwtResponse(token));
 	}

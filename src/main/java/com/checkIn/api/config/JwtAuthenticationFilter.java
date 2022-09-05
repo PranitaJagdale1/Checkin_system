@@ -17,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.checkIn.api.helper.JwtUtil;
 import com.checkIn.api.services.PassUserDetailsService;
-
+//it checks validity of the jwt by verifying jwt signature
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 

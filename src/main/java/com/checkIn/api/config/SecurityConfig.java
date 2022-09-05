@@ -27,27 +27,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	@Autowired
 	private JwtAuthenticationFilter jwtFilter;
 	
+	//it allows web based security for specific http request
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers(HttpMethod.POST,"/checkin").permitAll()
+		.antMatchers(HttpMethod.POST,"/checkin").permitAll()//antMatchers->use to configure the URL paths
 		.antMatchers(HttpMethod.GET,"/checkinhost").authenticated()
-		.antMatchers(HttpMethod.GET,"/checkin").authenticated().and()
-			.csrf()
+		.antMatchers(HttpMethod.GET,"/checkin").permitAll().and()
+			.csrf() //that forces user to execute unwanted actions
 			.disable()
-			.cors()
+			.cors() //restricting the resources implemented in web browser
 			.disable()
 			.authorizeRequests()
 			.antMatchers("/token").permitAll()
-			.anyRequest().authenticated()
+			.anyRequest().permitAll()
 			.and()
+			//stateless is one that does not save client data generated in one session
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+			
 		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 	
+	// here  we define which type of authentication we will use
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(passUserDetailsService);
+		auth.userDetailsService(passUserDetailsService);	
+		//userDetailsService-> it is an interface,used to retrive user related data
 	}
 	
 	@Bean
