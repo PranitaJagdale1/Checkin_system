@@ -14,14 +14,9 @@ public class CheckInRecord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	
 	private String lastname;
 	private String firstname;
-	private String seatNumber;
-	private String checkInTime;
 	private String flightNumber;
-	private String flightDate;
 	private long bookingId;
 	public long getId() {
 		return id;
@@ -41,29 +36,11 @@ public class CheckInRecord {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	public String getSeatNumber() {
-		return seatNumber;
-	}
-	public void setSeatNumber(String seatNumber) {
-		this.seatNumber = seatNumber;
-	}
-	public String getCheckInTime() {
-		return checkInTime;
-	}
-	public void setCheckInTime(String checkInTime) {
-		this.checkInTime = checkInTime;
-	}
 	public String getFlightNumber() {
 		return flightNumber;
 	}
 	public void setFlightNumber(String flightNumber) {
 		this.flightNumber = flightNumber;
-	}
-	public String getFlightDate() {
-		return flightDate;
-	}
-	public void setFlightDate(String flightDate) {
-		this.flightDate = flightDate;
 	}
 	public long getBookingId() {
 		return bookingId;
@@ -71,16 +48,12 @@ public class CheckInRecord {
 	public void setBookingId(long bookingId) {
 		this.bookingId = bookingId;
 	}
-	public CheckInRecord(long id, String lastname, String firstname, String seatNumber, String checkInTime,
-			String flightNumber, String flightDate, long bookingId) {
+	public CheckInRecord(long id, String lastname, String firstname, String flightNumber, long bookingId) {
 		super();
 		this.id = id;
 		this.lastname = lastname;
 		this.firstname = firstname;
-		this.seatNumber = seatNumber;
-		this.checkInTime = checkInTime;
 		this.flightNumber = flightNumber;
-		this.flightDate = flightDate;
 		this.bookingId = bookingId;
 	}
 	public CheckInRecord() {
@@ -89,10 +62,11 @@ public class CheckInRecord {
 	}
 	@Override
 	public String toString() {
-		return "CheckInRecord [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", seatNumber="
-				+ seatNumber + ", checkInTime=" + checkInTime + ", flightNumber=" + flightNumber + ", flightDate="
-				+ flightDate + ", bookingId=" + bookingId + "]";
+		return "CheckInRecord [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", flightNumber="
+				+ flightNumber + ", bookingId=" + bookingId + "]";
 	}
+	
+	
 	
 	
 	}

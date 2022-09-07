@@ -3,13 +3,18 @@ package com.checkIn.api.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
 
-import com.checkIn.api.model.UserEntity;
+import com.checkIn.api.model.User;
 
 
-@Repository
-public interface UserRepository extends JpaRepository<UserEntity, String>{
 
-	public Optional<UserEntity> findById(String id);
+
+public interface UserRepository extends JpaRepository<User, Long>{
+	
+	public Optional<User> findById(String id);
+
+	@Query("select u from User u where u.username=?1")
+	public User findByUsername(String username);
+
 }

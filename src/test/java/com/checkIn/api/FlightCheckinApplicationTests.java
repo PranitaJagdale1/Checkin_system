@@ -26,10 +26,9 @@ class FlightCheckinApplicationTests {
 		c.setId(1L);
 		c.setLastname("Jagdale");
 		c.setFirstname("Pranita");
-		c.setSeatNumber("6");
-		c.setCheckInTime("2pm");
+		
 		c.setFlightNumber("indigo12");
-		c.setFlightDate("23-9-2022");
+		
 		c.setBookingId(2);
 		cRepo.save(c);
 		assertNotNull(cRepo.findById(1L).get());

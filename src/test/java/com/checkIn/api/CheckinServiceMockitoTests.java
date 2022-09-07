@@ -34,8 +34,8 @@ public class CheckinServiceMockitoTests {
 	public void test_getAllCkeckin()
 	{
 		List<CheckInRecord> myCheckIn = new ArrayList<CheckInRecord>();
-		myCheckIn.add(new CheckInRecord(1,"Patil","Shivani","6","2pm","indigo12","23-9-2022",4));
-		myCheckIn.add(new CheckInRecord(2,"Bhoite","Mayuri","8","5pm","AirlineAb12","21-9-2022",1));
+		myCheckIn.add(new CheckInRecord(1,"Patil","Shivani","indigo12",4));
+		myCheckIn.add(new CheckInRecord(2,"Bhoite","Mayuri","AirlineAb12",1));
 		
 		//to mock external dependency
 		//(i.e whenever this getAllChecking() method is called it will return our own data.
@@ -50,7 +50,7 @@ public class CheckinServiceMockitoTests {
 	@Order(2)
 	public void test_addCheckin()
 	{
-		CheckInRecord checkInRecord = new CheckInRecord(3,"Sawant","Rutuja","3","6pm","AirlineA","11-10-2022",3);
+		CheckInRecord checkInRecord = new CheckInRecord(3,"Sawant","Rutuja","AirlineA",3);
 		//mock external dependency
 		when(checkInRepository.save(checkInRecord)).thenReturn(checkInRecord);
 		assertEquals(checkInRecord,checkInController.addCheckin(checkInRecord)); //checks if expected value and actual value are equal
