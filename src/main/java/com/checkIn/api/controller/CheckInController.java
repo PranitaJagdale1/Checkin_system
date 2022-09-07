@@ -107,6 +107,13 @@ public class CheckInController {
 			return responseEntity.getBody();
 		}*/
 		
+		@GetMapping("/checkin/booking-MS/{bookingId}")
+		public Booking getBookingDetail(@PathVariable("bookingId") Long bookingId)
+		{
+		ResponseEntity<Booking> temp = restTemplate.getForEntity("http://localhost:8810/book/"+bookingId, Booking.class);
+		Booking book = temp.getBody();
+		return book;
+		}
 		
 	
 }
