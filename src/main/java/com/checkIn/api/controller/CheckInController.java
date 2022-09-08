@@ -34,24 +34,12 @@ import com.checkIn.api.repository.CheckInRepository;
 //@RequestMapping("/api")
 public class CheckInController {
 
-	
 	@Autowired
 	private RestTemplate restTemplate;
-	//static RestTemplate restTemplate = new RestTemplate();
-	
-	
-	
-	@GetMapping("/checkinhost")
-	public String gethello()
-	{
-		return "Hello world";
-	}
-	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private CheckInRepository checkInRepository;
-	
 	
 	
 	
@@ -69,51 +57,38 @@ public class CheckInController {
 		return checkInRepository.findAll();
 	}
 	
-	
 	// Method to fetch data by checkin id
-		@GetMapping("/checkin/{Id}")
-		public ResponseEntity<CheckInRecord> getCheckInId(@PathVariable Long Id)
-		{
-			CheckInRecord getCheckIn = checkInRepository.getById(Id);
-			return ResponseEntity.ok().body(getCheckIn);
-		}
+	@GetMapping("/checkin/{Id}")
+	public ResponseEntity<CheckInRecord> getCheckInId(@PathVariable Long Id)
+	{
+		CheckInRecord getCheckIn = checkInRepository.getById(Id);
+		return ResponseEntity.ok().body(getCheckIn);
+	}
 		
-		//Method to fetch data by booking Id
-		@GetMapping("/checkin/booking/{bookingId}")
-		public List<CheckInRecord> getCheckInByBookingId(@PathVariable("bookingId") Long bookingId)
-		{
-			return checkInRepository.findByBookingId(bookingId);
-		}
+	//Method to fetch data by booking Id
+	@GetMapping("/checkin/booking/{bookingId}")
+	public List<CheckInRecord> getCheckInByBookingId(@PathVariable("bookingId") Long bookingId)
+	{
+		return checkInRepository.findByBookingId(bookingId);
+	}
 		
-		//External Api call to get All booking data
-		@GetMapping("/checkin/booking-MS")
-		public List<Object> getBook()
-		{
-			String url = "http://localhost:8810/book";
-			Object[] objects = restTemplate.getForObject(url, Object[].class);
-			return Arrays.asList(objects);
-		}
+	//External Api call to get All booking data
+	@GetMapping("/checkin/booking-MS")
+	public List<Object> getBook()
+	{
+		String url = "http://localhost:8810/book";
+		Object[] objects = restTemplate.getForObject(url, Object[].class);
+		return Arrays.asList(objects);
+	}
 		
-		/*@GetMapping("/checkin/booking-MS/{bookingId}")
-		public String getBookingDetail(@PathVariable("bookingId") Long bookingId)
-		{
-			System.out.println("Inside booking Microservice");
-			HttpHeaders headers = new HttpHeaders();
-			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-			HttpEntity<String> entity = new HttpEntity<String>(headers);
-			
-			ResponseEntity<String> responseEntity = restTemplate
-					.exchange("http://localhost:8810/book/{bookingId}"+bookingId,HttpMethod.GET,entity,String.class);
-			return responseEntity.getBody();
-		}*/
-		
-		@GetMapping("/checkin/booking-MS/{bookingId}")
-		public Booking getBookingDetail(@PathVariable("bookingId") Long bookingId)
-		{
-		ResponseEntity<Booking> temp = restTemplate.getForEntity("http://localhost:8810/book/"+bookingId, Booking.class);
-		Booking book = temp.getBody();
-		return book;
-		}
+	//External Api call to get Particular booking id data
+	@GetMapping("/checkin/booking-MS/{bookingId}")
+	public Booking getBookingDetail(@PathVariable("bookingId") Long bookingId)
+	{
+	ResponseEntity<Booking> temp = restTemplate.getForEntity("http://localhost:8810/book/"+bookingId, Booking.class);
+	Booking book = temp.getBody();
+	return book;
+	}
 		
 	
 }

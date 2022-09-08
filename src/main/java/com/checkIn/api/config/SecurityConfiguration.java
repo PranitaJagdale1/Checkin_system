@@ -47,6 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/checkin").permitAll()
 				.antMatchers(HttpMethod.GET, "/checkin").permitAll()
+				.antMatchers(HttpMethod.GET, "/checkin/{Id}").permitAll()
+				.antMatchers(HttpMethod.GET, "/checkin/booking/{bookingId}").permitAll()
+				.antMatchers(HttpMethod.GET, "/checkin/booking-MS").permitAll()
+				.antMatchers(HttpMethod.GET, "/checkin/booking-MS/{bookingId}").permitAll()
 				.anyRequest().permitAll()
 				.and().httpBasic().and().csrf().disable();
 	}
