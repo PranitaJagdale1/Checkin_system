@@ -16,7 +16,6 @@ public class CheckInRecord {
 	private long id;
 	private String lastname;
 	private String firstname;
-	private String flightNumber;
 	private long bookingId;
 	public long getId() {
 		return id;
@@ -36,24 +35,18 @@ public class CheckInRecord {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	public String getFlightNumber() {
-		return flightNumber;
-	}
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
-	}
+	
 	public long getBookingId() {
 		return bookingId;
 	}
 	public void setBookingId(long bookingId) {
 		this.bookingId = bookingId;
 	}
-	public CheckInRecord(long id, String lastname, String firstname, String flightNumber, long bookingId) {
+	public CheckInRecord(long id, String lastname, String firstname, long bookingId) {
 		super();
 		this.id = id;
 		this.lastname = lastname;
 		this.firstname = firstname;
-		this.flightNumber = flightNumber;
 		this.bookingId = bookingId;
 	}
 	public CheckInRecord() {
@@ -62,9 +55,10 @@ public class CheckInRecord {
 	}
 	@Override
 	public String toString() {
-		return "CheckInRecord [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", flightNumber="
-				+ flightNumber + ", bookingId=" + bookingId + "]";
+		return "CheckInRecord [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", bookingId="
+				+ bookingId + "]";
 	}
+	
 	
 	
 	

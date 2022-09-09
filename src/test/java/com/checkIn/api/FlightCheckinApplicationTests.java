@@ -26,9 +26,6 @@ class FlightCheckinApplicationTests {
 		c.setId(1L);
 		c.setLastname("Jagdale");
 		c.setFirstname("Pranita");
-		
-		c.setFlightNumber("indigo12");
-		
 		c.setBookingId(2);
 		cRepo.save(c);
 		assertNotNull(cRepo.findById(1L).get());
