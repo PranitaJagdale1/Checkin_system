@@ -16,7 +16,7 @@ import com.checkIn.api.services.EmailSenderService;
 import javax.mail.MessagingException;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-//@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+
 @SpringBootApplication
 @EnableEurekaClient
 @EnableSwagger2
