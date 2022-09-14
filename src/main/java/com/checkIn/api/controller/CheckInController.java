@@ -26,7 +26,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.checkIn.api.model.Booking;
 import com.checkIn.api.model.CheckInRecord;
-
+import com.checkIn.api.model.FlightSearch;
 import com.checkIn.api.repository.CheckInRepository;
 
 
@@ -91,6 +91,15 @@ public class CheckInController {
 	Booking book = temp.getBody();
 	return book;
 	}
+	
+	//External Api call to get Particular flight id data
+		@GetMapping("/checkin/flight-MS/{id}")
+		public FlightSearch getFlightDetail(@PathVariable("id") Long id)
+		{
+		ResponseEntity<FlightSearch> temp = restTemplate.getForEntity("http://localhost:8810/search/"+id, FlightSearch.class);
+		FlightSearch search = temp.getBody();
+		return search;
+		}
 	
 	
 		

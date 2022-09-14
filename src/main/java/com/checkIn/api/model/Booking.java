@@ -1,27 +1,25 @@
 package com.checkIn.api.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Booking {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long bookingId;
 	private String firstName;
 	private String lastName;
 	private String gender;
 	private int noOfSeats;
 	private String classs;
+	private long flightId;
 	
-	public Booking(long bookingId, String firstName, String lastName, String gender, int noOfSeats, String classs) {
-		super();
-		this.bookingId = bookingId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.gender = gender;
-		this.noOfSeats = noOfSeats;
-		this.classs = classs;
-	}
-
-	public Booking() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public long getBookingId() {
 		return bookingId;
@@ -71,12 +69,41 @@ public class Booking {
 		this.classs = classs;
 	}
 
+	public long getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(long flightId) {
+		this.flightId = flightId;
+	}
+
+	
+
+	public Booking(long bookingId, String firstName, String lastName, String gender, int noOfSeats, String classs,
+			long flightId) {
+		super();
+		this.bookingId = bookingId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.noOfSeats = noOfSeats;
+		this.classs = classs;
+		this.flightId = flightId;
+		
+	}
+
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
-				+ gender + ", noOfSeats=" + noOfSeats + ", classs=" + classs + "]";
+				+ gender + ", noOfSeats=" + noOfSeats + ", classs=" + classs + ", flightId=" + flightId + "]";
 	}
-	
-	
+
 	
 }
+
+	
